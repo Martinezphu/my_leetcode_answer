@@ -1,0 +1,20 @@
+here is my answer for leetcode that can not be saved 
+class Solution:
+    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if root == None: 
+            return TreeNode(val)
+        def dfs(root:Optional[TreeNode],val:int): 
+            newNode = TreeNode(val)
+            
+            if root.left == None and val < root.val: 
+                root.left = newNode
+            if root.right == None and val > root.val: 
+                root.right = newNode 
+            
+            if val < root.val: 
+                dfs(root.left,val)
+            if val > root.val: 
+                dfs(root.right,val)
+            
+            return root 
+        return dfs(root,val)
